@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActivityDetector</string>
+    <string name="title_section3">Setting</string>
+    <string name="title_section2">Monitoring</string>
+    <string name="title_section1">Connect</string>
+    <string name="title_connected_devices"><u><b><i>Devices connected</i></b></u></string>
+    <string name="scan_device">Scan for devices</string>
+    <string name="add_mobile">Add device mobile</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+
+</resources>

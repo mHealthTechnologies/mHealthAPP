@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical" >
+    
+    <Button
+        android:id="@+id/button_connect_disconnect"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/button_menus"
+        android:text="@string/connect_device" />
+    
+    <Button
+        android:id="@+id/button_streaming"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/button_menus"
+        android:text="@string/start_streaming" />
+    
+    <Button
+        android:id="@+id/button_device_sensors"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/button_menus"
+        android:text="@string/sensors" />
+    
+    
+    <Button
+        android:id="@+id/button_device_configuration"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/button_menus"
+        android:text="@string/configuration" />
+    
+    <Button
+        android:id="@+id/button_device_remove"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/button_menus"
+        android:text="@string/remove" />
+    
+</LinearLayout>

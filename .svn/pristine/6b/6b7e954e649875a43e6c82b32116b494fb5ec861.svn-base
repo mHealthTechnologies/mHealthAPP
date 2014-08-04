@@ -1,0 +1,202 @@
+package com.example.activitydetector;
+
+import java.util.Hashtable;
+import java.util.Set;
+
+import com.jjoe64.graphview.GraphView.LegendAlign;
+
+import visualizationManager.VisualizationManager;
+import visualizationManager.Plot.GraphType;
+import communicationManager.CommunicationManager;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+public class VisualizationFragment extends Fragment{
+
+	
+	public VisualizationManager vm;
+	public CommunicationManager cm;
+	
+	public static String NAME_GRAPH = "nameGraph";
+	
+	public static final String nameGraph = "Visualization Online";
+	public boolean online;
+	public boolean configuration;
+	public double viewPort;
+	public double maxY;
+	public double minY;
+	public boolean setViewPort;
+	public boolean setYValues;
+	public boolean showLegend;
+	public int align;
+	
+	static final int REQUEST_GRAPH_CONFIGURATION = 1;
+	static final int REQUEST_ONLINE_VISUALIZATION = 2;
+	static final String IS_ONLINE = "online";
+	static final String SET_VIEW_PORT = "setViewPort";
+	static final String VIEW_PORT = "viewPort";
+	static final String SET_COORDINATES = "setCoordinates";
+	static final String Y_MAX = "yMax";
+	static final String Y_MIN = "yMin";
+	static final String SET_LEGEND = "setLegend";
+	static final String LEGEND = "legend";
+	
+	
+	public VisualizationFragment() {
+		super();
+		// TODO Auto-generated constructor stub
+		online = false;
+		vm = VisualizationManager.getInstance();
+		cm = CommunicationManager.getInstance();
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		vm.addGraph(nameGraph, GraphType.LINE, getActivity());
+		vm.setScalable(nameGraph, true);
+		vm.setScrollable(nameGraph, true);
+		vm.setViewPort(nameGraph, 0, 200);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		
+		LinearLayout mLinearLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.visualization, null);
+		
+		LinearLayout graphLayout = (LinearLayout) mLinearLayout.findViewById(R.id.layout_graph);
+		vm.paint(nameGraph, graphLayout);
+		
+		Button visualizationButton = (Button) mLinearLayout.findViewById(R.id.button_visualization);
+		if(online){
+			visualizationButton.setBackgroundColor(getResources().getColor(R.color.Red));
+			visualizationButton.setText(R.string.stop);
+		}
+		else{
+			visualizationButton.setBackgroundColor(getResources().getColor(R.color.Green));
+			visualizationButton.setText(R.string.start);
+		}
+			
+		visualizationButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(online==false){
+					Hashtable<String, Integer> states = cm.getCurrentDevicesState();
+					Set<String> keys = states.keySet();
+					int cont = 0;
+					for(String k: keys)
+						if(states.get(k)==2)
+							cont++;
+					
+					if(cont==0){
+						sendErrorDialog("There are no devices streaming");
+						return;
+					}
+					Intent intent = new Intent(getActivity(), StartVisualizationActivity.class);
+					startActivityForResult(intent, REQUEST_ONLINE_VISUALIZATION);
+				}
+				else{
+					online = false;
+					Button b = (Button) v;
+					b.setBackgroundColor(getResources().getColor(R.color.Green));
+					b.setText(R.string.start);
+				}
+			}
+		});
+		
+		
+		Button configurationButton = (Button) mLinearLayout.findViewById(R.id.button_graph_configuration);
+		configurationButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent serverIntent = new Intent(getActivity().getApplicationContext(), GraphConfigurationActivity.class);
+				serverIntent.putExtra(IS_ONLINE, online);
+				startActivityForResult(serverIntent, REQUEST_GRAPH_CONFIGURATION);
+			}
+		});
+		
+		
+		return mLinearLayout;
+	}
+	
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		switch (requestCode) {
+			case REQUEST_GRAPH_CONFIGURATION:
+				if(resultCode==Activity.RESULT_OK){
+					configuration = true;
+					Bundle extras = data.getExtras();
+					setViewPort = extras.getBoolean(SET_VIEW_PORT);
+					viewPort = extras.getDouble(VIEW_PORT);
+					setYValues = extras.getBoolean(SET_COORDINATES);
+					maxY = extras.getDouble(Y_MAX);
+					minY = extras.getDouble(Y_MIN);
+					showLegend = extras.getBoolean(SET_LEGEND);
+					align = extras.getInt(LEGEND);			
+					if(online && showLegend){
+						switch(align){
+							case 1:
+								vm.setLegendAlign(nameGraph, LegendAlign.TOP);
+							break;
+							case 2:
+								vm.setLegendAlign(nameGraph, LegendAlign.MIDDLE);
+							break;
+							case 3:
+								vm.setLegendAlign(nameGraph, LegendAlign.BOTTOM);
+							break;
+						}
+						vm.setShowLegend(nameGraph, showLegend);
+					}
+				}
+			break;
+			case REQUEST_ONLINE_VISUALIZATION:
+				if(resultCode==Activity.RESULT_OK){
+					online = true;
+					Button b = (Button) getView().findViewById(R.id.button_visualization);
+					b.setBackgroundColor(getResources().getColor(R.color.Red));
+					b.setText(R.string.stop);
+				}
+			break;
+		}
+	}
+	
+	public void sendErrorDialog(String message){
+		
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+		// set title
+		alertDialogBuilder.setTitle("Visualization not possible");
+		// set dialog message
+		alertDialogBuilder
+				.setMessage(message)
+				.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						// if this button is clicked, close
+						// current activity
+						dialog.cancel();
+					}
+				  });
+ 
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		// show it
+		alertDialog.show();
+	}
+}

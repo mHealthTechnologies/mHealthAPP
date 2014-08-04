@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+    
+    <LinearLayout
+        android:id="@+id/headerBarLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:background="@drawable/button_border3" >
+	    
+	    <TextView
+	        android:id="@+id/guidelinesTitle"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="15dp"
+	        android:layout_weight="0.6"
+	        android:text="@string/guidelinesTitleString"
+	        android:textColor="@color/Negro"
+	        android:textSize="30sp" />
+	
+	    <Button
+	        android:id="@+id/changeChannelButton"
+	        style="?android:attr/buttonStyleSmall"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_gravity="right"
+	        android:layout_weight="0.25"
+	        android:text="Playlists" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="vertical" >
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4" >
+
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <ListView
+        android:id="@+id/listListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:background="@color/Gris"
+        android:paddingBottom="15dp" >
+
+    </ListView>
+    
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/TextView01"
+        android:layout_weight="0.1"
+        android:background="@drawable/button_border2"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="1.0dip"
+        android:paddingLeft="4.0dip"
+        android:paddingRight="4.0dip"
+        android:paddingTop="5.0dip" >
+
+        <ToggleButton
+            android:id="@+id/listExtendButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textOff="Extend List"
+            android:textOn="Colapse List"/>
+        
+        <ToggleButton
+            android:id="@+id/playerExtendButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textOff="Extend Player"
+            android:textOn="Colapse Player"/>
+
+    </LinearLayout>
+
+</LinearLayout>

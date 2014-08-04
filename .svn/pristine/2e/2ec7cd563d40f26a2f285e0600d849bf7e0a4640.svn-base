@@ -1,0 +1,80 @@
+package com.example.activitydetector;
+
+
+import remoteStorageManager.RemoteStorageManager;
+import systemManager.SystemManager;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.View.OnCreateContextMenuListener;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
+
+public class RemoteStorageFragment extends Fragment{
+
+	RemoteStorageManager sm;
+	SystemManager sysm;
+	View view;
+	Button upload;
+	ToggleButton wifi;
+	
+	
+	public RemoteStorageFragment(){
+		
+		super();
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		sm = RemoteStorageManager.getInstance();
+		RemoteStorageManager.CreateStorage(getActivity());
+		sysm = SystemManager.getInstance();
+		sm.setServerIP("http://192.168.1.11");
+		sm.setMobileMetadataPath("insert_mobile_metadata.php");
+		sm.setMobileSignalsPath("insert_mobile_signals.php");
+		sm.setMobileUnitsPath("insert_mobile_units.php");
+		sm.setShimmerMetadataPath("insert_shimmer_metadata.php");
+		sm.setShimmerSignalsPath("insert_shimmer_signals.php");
+		sm.setShimmerUnitsPath("insert_shimmer_units.php");
+		sm.setLastIDPath("get_last_ID.php");
+	}	
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+	
+		view = LayoutInflater.from(getActivity()).inflate(R.layout.remotestorage, null);
+		Button upload = (Button) view.findViewById(R.id.uploadButton);
+		wifi = (ToggleButton) view.findViewById(R.id.WifiToggleButton);
+
+		wifi.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				if(wifi.isChecked())
+					sysm.setWifiEnabled(true, getActivity());
+				else
+					sysm.setWifiEnabled(false, getActivity());
+			}
+		});
+		
+		upload.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+
+				sm.uploadUnitsTable("device 1");
+				sm.uploadMetadataTable("device 1");
+				sm.uploadSignalsTable("device 1");
+			}
+		});
+		
+		return view;
+	}
+}

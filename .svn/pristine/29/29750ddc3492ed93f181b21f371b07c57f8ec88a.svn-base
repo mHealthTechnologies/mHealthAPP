@@ -1,0 +1,173 @@
+package com.example.activitydetector;
+
+import com.jjoe64.graphview.GraphView.LegendAlign;
+
+import visualizationManager.VisualizationManager;
+import communicationManager.CommunicationManager;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.ToggleButton;
+
+public class GraphConfigurationActivity extends Activity{
+	
+	public CommunicationManager cm;
+	public VisualizationManager vm;
+	
+	public double viewPort;
+	public double maxY;
+	public double minY;
+	public boolean setViewPort;
+	public boolean setYValues;
+	public boolean showLegend;
+	public int align;
+	
+	ToggleButton viewButton, coordinatesButton, legendButton;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		// Setup the window
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		setContentView(R.layout.graph_configuration);
+
+		// Set result CANCELED incase the user backs out
+		setResult(Activity.RESULT_CANCELED);	
+		
+		vm = VisualizationManager.getInstance();
+		
+		Bundle extra = getIntent().getExtras();
+		if(extra.getBoolean(VisualizationFragment.IS_ONLINE)){
+			LinearLayout llView = (LinearLayout) findViewById(R.id.layout_viewPort);
+			LinearLayout llCoordinates = (LinearLayout) findViewById(R.id.layout_coordinates);
+			llView.setVisibility(View.GONE);
+			llCoordinates.setVisibility(View.GONE);
+		}
+			
+		
+		
+		viewButton = (ToggleButton) findViewById(R.id.viewPortToggle);
+		viewButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				EditText et = (EditText) findViewById(R.id.txt_viewPort);
+				if (isChecked) {
+					// The toggle is enabled
+		            et.setVisibility(View.VISIBLE);
+		        } else {
+		            // The toggle is disabled
+		            et.setVisibility(View.GONE);
+		        }
+			}
+		});
+		coordinatesButton = (ToggleButton) findViewById(R.id.yValuesToggle);
+		coordinatesButton.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				LinearLayout ll = (LinearLayout) findViewById(R.id.layoutYcoordinates);
+				if (isChecked) {
+					// The toggle is enabled
+		            ll.setVisibility(View.VISIBLE);
+		        } else {
+		            // The toggle is disabled
+		            ll.setVisibility(View.GONE);
+		        }
+			}
+		});
+		legendButton = (ToggleButton) findViewById(R.id.legendToggle);
+		legendButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				RadioGroup rg = (RadioGroup) findViewById(R.id.legendRagdioGroup);
+				if (isChecked) {
+					// The toggle is enabled
+		            rg.setVisibility(View.VISIBLE);
+		        } else {
+		            // The toggle is disabled
+		            rg.setVisibility(View.GONE);
+		        }
+			}
+		});
+		
+		Button applyButton = (Button) findViewById(R.id.button_apply2);
+		applyButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(viewButton.isChecked()){
+					setViewPort = true;
+					EditText textViewPort = (EditText) findViewById(R.id.txt_viewPort);
+					if(textViewPort.getText().toString().equals(""))
+						setViewPort = false;
+					else
+						viewPort = Double.valueOf(textViewPort.getText().toString());
+				}
+				else
+					setViewPort = false;
+				if(coordinatesButton.isChecked()){
+					setYValues = true;
+					EditText textMaxY = (EditText) findViewById(R.id.txt_max);
+					EditText textMinY = (EditText) findViewById(R.id.txt_min);
+					if(textMaxY.getText().toString().equals(""))
+						setYValues = false;
+					else
+						maxY = Double.valueOf(textMaxY.getText().toString());
+					if(textMinY.getText().toString().equals(""))
+						setYValues = false;
+					else
+						minY = Double.valueOf(textMinY.getText().toString());
+				}
+				else
+					setYValues = false;
+				if(legendButton.isChecked()){
+					showLegend = true;
+					RadioGroup rg = (RadioGroup) findViewById(R.id.legendRagdioGroup);
+					switch(rg.getCheckedRadioButtonId()){
+						case R.id.radio_top:
+							align = 1;
+						break;
+						case R.id.radio_middle:
+							align = 2;
+						break;
+						case R.id.radio_bottom:
+							align = 3;
+						break;
+						default:
+							showLegend = false;
+						break;
+					}
+				}
+				else
+					showLegend = false;
+				
+				Intent intent = new Intent();
+				intent.putExtra(VisualizationFragment.SET_VIEW_PORT, setViewPort);
+				intent.putExtra(VisualizationFragment.VIEW_PORT, viewPort);
+				intent.putExtra(VisualizationFragment.SET_COORDINATES, setYValues);
+				intent.putExtra(VisualizationFragment.Y_MAX, maxY);
+				intent.putExtra(VisualizationFragment.Y_MIN, minY);
+				intent.putExtra(VisualizationFragment.SET_LEGEND, showLegend);
+				intent.putExtra(VisualizationFragment.LEGEND, align);
+				finish();
+			}
+		});
+	}
+
+}

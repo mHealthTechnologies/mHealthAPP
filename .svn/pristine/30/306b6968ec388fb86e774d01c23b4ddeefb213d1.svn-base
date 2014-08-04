@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical" >
+    
+    
+    
+    <EditText android:id="@+id/txt_name_device"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="text" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp" >
+
+        <Button
+	        android:id="@+id/button_mobile"
+	        android:layout_width="0dp"
+	        android:layout_weight="0.5"
+	        android:textSize="20sp"
+	        android:background="@drawable/button_menus"
+	        android:layout_height="wrap_content"
+	        android:text="@string/mobile" />
+    
+   	 	<Button
+	        android:id="@+id/button_shimmer"
+	        android:layout_width="0dp"
+	        android:layout_weight="0.5"
+	        android:textSize="20sp"
+	        android:background="@drawable/button_menus"
+	        android:layout_height="wrap_content"
+	        android:text="@string/shimmer" />
+    </LinearLayout>
+    
+    
+</LinearLayout>

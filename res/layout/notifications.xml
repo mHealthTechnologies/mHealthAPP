@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.12"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|left"
+        android:background="@drawable/button_border3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="New Notification"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+       
+    <EditText
+        android:id="@+id/EditNotificationTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:hint="@string/notificationTitle" >
+  
+	</EditText>  
+	
+    <EditText
+        android:id="@+id/EditNotificationText"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:hint="@string/notificationText"
+        android:inputType="textMultiLine"
+        android:lines="5" >
+  
+	</EditText>  
+   
+    <Spinner
+        android:id="@+id/SpinnerFeedbackType"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:entries="@array/feedbacktypelist"
+        android:prompt="@string/feedbacktype" >
+  
+	</Spinner> 
+    
+   	<CheckBox
+   	    android:id="@+id/youtubeCheckBox"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="0dp"
+   	    android:layout_weight="0.13"
+   	    android:text="Launch Recomendations" />
+   	
+   	<CheckBox
+   	    android:id="@+id/timeCheckBox"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="0dp"
+   	    android:layout_weight="0.13"
+   	    android:text="Schedule Notification" />
+    
+	<RelativeLayout
+	    android:id="@+id/RelativeLayout01"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="0.15" >
+
+		<Button
+		    android:id="@+id/newNotificationButton"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerInParent="true"
+		    android:background="@drawable/blue_selector"
+		    android:text="Save Notification" />
+    
+   	</RelativeLayout>
+</LinearLayout>

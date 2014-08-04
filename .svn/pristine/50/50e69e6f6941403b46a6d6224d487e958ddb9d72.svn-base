@@ -1,0 +1,27 @@
+package com.example.activitydetector;
+
+import android.content.Context;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class SensorView extends LinearLayout{
+
+	
+	public CheckBox checkbox;
+	public TextView txt;
+	
+	public SensorView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+		inflate(context, R.layout.sensor_checkbox, this);
+		checkbox = (CheckBox) findViewById(R.id.checkBox_sensor);
+		txt = (TextView) findViewById(R.id.text_sensor);
+	}
+	
+	public void setSensor(SensorDevice sensor){
+		checkbox.setText(sensor.sensorType.toString());
+		checkbox.setSelected(sensor.selected);
+	}
+
+}

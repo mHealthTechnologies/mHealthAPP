@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical" >
+    
+	
+    <LinearLayout android:id="@+id/layout_viewPort"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp"
+	    android:orientation="horizontal">
+        
+        <TextView android:id="@+id/text_viewPort"
+			android:layout_width="0dp"
+			android:layout_weight="0.70"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="20sp"
+			android:paddingLeft="8dp"
+			android:text="@string/viewPort"
+		/>
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:paddingRight="10dp" >
+            
+            <ToggleButton
+            android:id="@+id/viewPortToggle"
+            android:layout_height="match_parent"
+			android:layout_width="match_parent"
+            
+            android:background="@drawable/toggle_button"
+            android:textOff="@string/toggle_turn_no"
+            android:textOn="@string/toggle_turn_yes" />
+            
+        </LinearLayout>
+        
+        
+    </LinearLayout>
+    
+    <EditText android:id="@+id/txt_viewPort"
+		    android:layout_width="100dp"
+		    android:layout_height="wrap_content"
+		    android:inputType="number" 
+		    android:paddingLeft="8dp"
+		    android:visibility="gone"
+	/>
+    
+     <LinearLayout android:id="@+id/layout_coordinates"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp"
+	    android:orientation="horizontal">
+         
+          <TextView android:id="@+id/text_manual_Y"
+			android:layout_width="0dp"
+			android:layout_weight="0.70"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="20sp"
+			android:paddingLeft="8dp"
+			android:text="@string/text_manualY"
+		/>
+         
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:paddingRight="10dp"
+              android:layout_weight="0.3" >
+          
+         <ToggleButton
+             android:id="@+id/yValuesToggle"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:checked="false"
+             android:background="@drawable/toggle_button"
+             android:textOff="@string/toggle_turn_no"
+             android:textOn="@string/toggle_turn_yes" />
+         
+         </LinearLayout>
+         
+     </LinearLayout>
+     
+     <LinearLayout 
+         android:id="@+id/layoutYcoordinates"
+         android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="10dp"
+	     android:visibility="gone"
+	     android:orientation="horizontal">
+         
+         <TextView android:id="@+id/text_max"
+			android:layout_width="0dp"
+			android:layout_weight="0.15"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="20sp"
+			android:paddingLeft="8dp"
+			android:text="@string/text_max"
+		/>
+         
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.25" >
+
+             <EditText android:id="@+id/txt_max"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:inputType="numberSigned" 
+		  />
+         </LinearLayout>
+         
+         
+         
+         <TextView android:id="@+id/text_min"
+			android:layout_width="0dp"
+			android:layout_weight="0.15"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+			android:paddingTop="10dp"
+			android:textSize="20sp"
+			android:paddingLeft="8dp"
+			android:text="@string/text_min"
+		/>
+         
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.25" >
+
+             <EditText android:id="@+id/txt_min"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:inputType="numberSigned" 
+		  />
+         </LinearLayout>
+         
+         
+     </LinearLayout>
+     
+      <LinearLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="5dp"
+	    android:orientation="horizontal">
+         
+        <TextView android:id="@+id/text_legend"
+			android:layout_width="0dp"
+			android:layout_weight="0.70"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="20sp"
+			android:paddingLeft="8dp"
+			android:text="@string/text_legend"
+		/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_weight="0.3" >
+
+            <ToggleButton
+            android:id="@+id/legendToggle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/toggle_button"
+            android:textOff="@string/toggle_turn_no"
+            android:textOn="@string/toggle_turn_yes" />
+        </LinearLayout>
+        
+          
+      </LinearLayout>
+    
+   
+        
+        <RadioGroup android:id="@+id/legendRagdioGroup"
+			    android:orientation="horizontal"
+			    android:layout_marginTop="10dp"
+			    android:layout_marginLeft="10dp"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:visibility="gone"
+			    android:layout_gravity="end" >
+ 
+			    <RadioButton android:id="@+id/radio_top"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.30"
+			        android:layout_height="wrap_content"
+			        android:textSize="13sp"
+			        android:text="@string/top" />
+	 
+			    <RadioButton android:id="@+id/radio_middle"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.30"
+			        android:layout_height="wrap_content"
+			        android:textSize="13sp"
+			        android:text="@string/middle" />
+			    
+			    <RadioButton android:id="@+id/radio_bottom"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.30"
+			        android:layout_height="wrap_content"
+			        android:textSize="13sp"
+			        android:text="@string/bottom" />
+			    
+		</RadioGroup>
+        
+
+    
+    <Button
+	        android:id="@+id/button_apply2"
+	        android:layout_width="match_parent"
+	        android:layout_marginTop="20dp"
+	        android:layout_height="wrap_content"
+	        android:textSize="20sp"
+	        android:background="@drawable/button_menus"
+	        android:text="@string/apply_button" 
+	        
+	 />
+    
+</LinearLayout>

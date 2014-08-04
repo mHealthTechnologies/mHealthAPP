@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Azul2"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Notification"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+       
+    <EditText  
+    	android:id="@+id/EditNotificationTitle"  
+    	android:layout_height="wrap_content"  
+    	android:hint="@string/notificationTitle"  
+    	android:layout_width="fill_parent">  
+	</EditText>  
+	
+    <EditText  
+   		android:id="@+id/EditNotificationText"  
+    	android:layout_height="wrap_content"  
+    	android:hint="@string/notificationText"  
+    	android:inputType="textMultiLine"  
+    	android:lines="5"  
+    	android:layout_width="fill_parent">  
+	</EditText>  
+   
+    <Spinner  
+    	android:id="@+id/SpinnerFeedbackType"  
+    	android:layout_height="wrap_content"  
+    	android:prompt="@string/feedbacktype"  
+    	android:layout_width="fill_parent"  
+    	android:entries="@array/feedbacktypelist">  
+	</Spinner> 
+    
+   	<CheckBox
+   	    android:id="@+id/youtubeCheckBox"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:text="Launch Recomendations?" />
+ 
+   	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+   	
+   	<CheckBox
+   	    android:id="@+id/timeCheckBox"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:text="Schedule Notification?" />
+
+    </LinearLayout>
+    
+	<RelativeLayout
+	    android:id="@+id/RelativeLayout01"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" >
+
+		<Button
+		    android:id="@+id/newNotificationButton"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerInParent="true"
+		    android:text="Save Notification" />
+    
+   	</RelativeLayout>
+</LinearLayout>

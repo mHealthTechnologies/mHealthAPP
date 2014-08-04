@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mHealthDroid.mhealthpp"
+    android:versionCode="2"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+	<uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.CALL_PHONE"/>
+	<uses-permission android:name="android.permission.SEND_SMS"/>
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.mHealthDroid.mhealthapp.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.DeviceListActivity"
+                  android:label="@string/select_device"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.TypeDeviceActivity"
+                  android:label="@string/title_type_devices"
+                  android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.DeviceMenuActivity"
+                  android:label="@string/title_menu_device"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.ConfirmationActivity"
+                  android:label="@string/title_confirmation"
+                  android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.SensorListActivity"
+                  android:label="@string/title_sensor_list"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.DeviceConfigurationActivity"
+                  android:label="@string/title_configuration"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.GraphConfigurationActivity"
+                  android:label="@string/title_configuration"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.StartVisualizationActivity"
+                  android:label="@string/select_device2"
+                   android:theme="@android:style/Theme.Holo.Light.Dialog">
+         </activity>
+         <activity android:name="com.mHealthDroid.mhealthapp.YoutubeActivity">
+         </activity>
+         
+         <receiver android:name="systemManager.services.ScheduledTask"/>
+    </application>
+
+</manifest>

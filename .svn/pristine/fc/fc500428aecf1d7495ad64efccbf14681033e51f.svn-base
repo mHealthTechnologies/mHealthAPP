@@ -1,0 +1,23 @@
+package com.example.activitydetector;
+
+public class Device {
+
+	public String name;
+	public TypeDevice typeDevice;
+	public State state;
+	
+	
+	
+	public Device(String name, TypeDevice typeDevice, State state) {
+		super();
+		this.name = name;
+		if(typeDevice!=null)
+			this.typeDevice = typeDevice;
+		if(state!=null)
+			this.state = state;
+	}
+
+
+	enum TypeDevice{Shimmer, Mobile};
+	enum State {CONNECTING, CONNECTED, DISCONNECTED, STREAMING};
+}

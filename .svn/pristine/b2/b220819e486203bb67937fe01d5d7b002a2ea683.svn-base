@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    
+		    <Button android:id="@+id/button_connect" 
+		         	android:layout_width="150dp"
+		        	android:layout_height="80dp"
+		        	android:layout_marginTop="20dp"
+		        	android:layout_gravity="center_horizontal"
+		        	android:text="@string/connect_device"/>
+		    
+		    <Button android:id="@+id/button_disconnect" 
+		         	android:layout_width="150dp"
+		        	android:layout_height="80dp"
+		        	android:layout_gravity="center_horizontal"
+		        	android:text="@string/disconnect_device"/>    
+		    
+		    <Button android:id="@+id/button_stream" 
+		         	android:layout_width="150dp"
+		        	android:layout_height="80dp"
+		        	android:layout_gravity="center_horizontal"
+		        	android:text="@string/streaming"/>
+		    
+		    <Button android:id="@+id/button_configuration" 
+		         	android:layout_width="150dp"
+		        	android:layout_height="80dp"
+		        	android:layout_gravity="center_horizontal"
+		        	android:text="@string/device_configuration"/>
+		    
+		     <Button android:id="@+id/button_connected" 
+		         	android:layout_width="150dp"
+		        	android:layout_height="80dp"
+		        	android:layout_gravity="center_horizontal"
+		        	android:text="@string/connected"/>
+		     
+		     <ListView android:id="@+id/connected_devices"
+		        android:layout_width="match_parent"
+		        android:layout_height="0dip"
+		        android:layout_gravity="center_horizontal"
+		        android:stackFromBottom="true"
+		        android:visibility="gone"
+		        android:layout_weight="1" />
+		            
+        </LinearLayout>
+     
+      </ScrollView>
+
+</LinearLayout>

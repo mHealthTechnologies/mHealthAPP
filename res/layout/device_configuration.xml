@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+     <LinearLayout 
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="0.78"
+        android:orientation="vertical">
+
+    <LinearLayout 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingLeft="2dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        
+         <TextView android:id="@+id/text_store_data"
+			android:layout_width="0dp"
+			android:layout_weight="0.70"
+			android:paddingLeft="5dp"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="15sp"
+			android:text="@string/store_data"
+		/>
+         
+         <LinearLayout
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:paddingRight="10dp"  >
+             
+            <ToggleButton
+	        android:id="@+id/storeToggle"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:background="@drawable/toggle_button"
+	        android:textOn="@string/toggle_turn_on"
+	        android:textOff="@string/toggle_turn_off"
+	        android:checked="true" />
+             
+         </LinearLayout>
+         
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingLeft="2dp"
+        android:paddingTop="20dp"
+        android:orientation="horizontal">
+        
+        <TextView android:id="@+id/text_rate"
+			android:layout_width="0dp"
+			android:layout_weight="0.4"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="15sp"
+			android:paddingLeft="5dp"
+			android:text="@string/sample_rate"
+		/>
+        
+        <Spinner
+	        android:id="@+id/spinnerRate"
+	        android:layout_width="0dp"
+	        android:layout_weight="0.6"
+	        android:layout_height="wrap_content"
+	        android:prompt="@string/rate_prompt" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layout_format"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingLeft="2dp"
+        android:paddingTop="15dp"
+        android:orientation="horizontal" >
+        
+        <TextView android:id="@+id/text_data_format"
+			android:layout_width="0dp"
+			android:layout_weight="0.24"
+	        android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textSize="15sp"
+			android:paddingLeft="5dp"
+			android:text="@string/format_data"
+		/>
+
+        <RadioGroup
+            android:id="@+id/formatRagdioGroup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.76"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp" >
+
+            <RadioButton
+                android:id="@+id/radio_calibrated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calibrated"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/radio_uncalibrated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/uncalibrated"
+                android:textSize="12sp" />
+        </RadioGroup>
+		
+    </LinearLayout>
+    
+    </LinearLayout>
+    
+     
+     <LinearLayout 
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="0.22"
+        android:orientation="vertical">
+     
+    <Button
+	        android:id="@+id/button_apply"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:background="@drawable/button_menus"
+	        android:textSize="20sp"
+	        android:text="@string/apply_button" />
+    
+     </LinearLayout>
+
+    
+</LinearLayout>
