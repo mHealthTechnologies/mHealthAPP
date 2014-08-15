@@ -1,7 +1,7 @@
 mHealthAPP
 ==========
 
-This exemplary APP is intended to show the usefulness and potential of mHealthDroid, an implementation of an mHealth framework. We wish to point out that this app was developed in a very short time and almost efortless thanks to the abstraction level that brings the mHealthDroid API. As a matter of fact, most of the development time was invested on the graphical interface. The app can be found on Google Play by the name of mHealthDroid APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.activitydetector&hl=es_419">here</a>.
+This exemplary APP is intended to show the usefulness and potential of mHealthDroid, an implementation of an mHealth framework. We wish to point out that this app was developed in a very short time and almost efortless thanks to the abstraction level that brings the mHealthDroid API. As a matter of fact, most of the development time was invested on the graphical interface. The app can be found on Google Play by the name of mHealthAPP APP or <a href="https://play.google.com/store/apps/details?id=com.mHealthDroid.mhealthpp">here</a>.
 
 
 ### Main Features
